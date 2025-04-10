@@ -5,3 +5,6 @@ VALUES
 ('Yogurt', 'Natural', '-', '1L', 100, 1.80, '2025-10-15 00:00:00', 'A', 'Lácteo'),
 ('Leche Gloria', 'Entera', '-', '1L', 250, 3.00, '2025-09-01 00:00:00', 'A', 'Lácteo'),
 ('Atún Florida', '-', '-', '170g', 120, 5.00, '2025-10-05 00:00:00', 'A', 'Conserva');
+
+INSERT INTO supplier (name, company, cellular, state)
+VALUES ('Juan', 'florida','987654321', 'A');
