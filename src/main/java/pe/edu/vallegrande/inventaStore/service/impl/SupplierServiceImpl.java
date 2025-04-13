@@ -19,6 +19,7 @@ public class SupplierServiceImpl implements SupplierService {
     public SupplierServiceImpl(SupplierRepository supplierRepository) {
         this.supplierRepository = supplierRepository;
     }
+    
 
     @Override
     public List<Supplier> findAll() {
@@ -30,6 +31,12 @@ public class SupplierServiceImpl implements SupplierService {
     public Optional<Supplier> findById(Long id) {
         log.info("Listando Datos por ID: ");
         return supplierRepository.findById(id);
+    }
+
+    @Override
+    public List<Supplier> findByState(String state) {
+        log.info("Listando Datos por estado: ");
+        return supplierRepository.findByState(state);
     }
 
     @Override
@@ -47,10 +54,23 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public Supplier delete(Supplier supplier) {
-        log.info("Eliminar Datos: " + supplier.toString());
-        supplier.setState("A");
-        return supplierRepository.save(supplier);
+    public Optional<Supplier> softDelete(Long id) {
+        Optional<Supplier> supplierOpt = supplierRepository.findById(id);
+        supplierOpt.ifPresent(supplier -> {
+            supplier.setState("I");
+            supplierRepository.save(supplier);
+        });
+        return supplierOpt;
+    }
+
+    @Override
+    public Optional<Supplier> restore(Long id) {
+        Optional<Supplier> supplierOpt = supplierRepository.findById(id);
+        supplierOpt.ifPresent(supplier -> {
+            supplier.setState("A");
+            supplierRepository.save(supplier);
+        });
+        return supplierOpt;
     }
 
 }

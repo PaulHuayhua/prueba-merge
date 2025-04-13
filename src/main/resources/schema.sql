@@ -4,5 +4,5 @@ CREATE TABLE supplier (
     name VARCHAR(80) NOT NULL,
     company VARCHAR(100) NOT NULL,
     cellular CHAR(9) NOT NULL,
-    state CHAR(1) NOT NULL
+    state CHAR(1) NOT NULL CHECK (state IN ('A', 'I'))
 );
