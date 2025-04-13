@@ -11,6 +11,8 @@ public interface ProductService {
 
     List<Product> findAll();
 
+    List<Product> findByState(Character state);
+
 
     Optional<Product> findById(Long id);
 
@@ -19,6 +21,9 @@ public interface ProductService {
 
 
     Product update(Product product);
-   
-    Product delete(Product product);
+       
+    Product deleteById(Long id);
+
+    Product restoreById(Long id);
+
 }

@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "d6e76d05-ca63-46c4-8f56-f932a7d37598",
+		"name": "InventaStore - Paul",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43465865",
+		"_collection_link": "https://a22222-9802.postman.co/workspace/InventaStore~ed80e273-d0a3-4bce-b0f9-4620ed4a9793/collection/43465865-d6e76d05-ca63-46c4-8f56-f932a7d37598?action=share&source=collection_link&creator=43465865"
+	},
+	"item": [
+		{
+			"name": "CRUD InventaStore",
+			"item": [
+				{
+					"name": "CREATE || CREAR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Agua Loa\",\r\n  \"type\": \"-\",\r\n  \"flavor\": \"Natural\",\r\n  \"size\": \"500ml\",\r\n  \"stock\": 300,\r\n  \"price\": 1.2,\r\n  \"expirationDate\": \"2027-05-10T00:00:00\",\r\n  \"state\": \"A\",\r\n  \"category\": \"Bebida\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://opulent-space-trout-4jgjgg79rg9937q6g-8085.app.github.dev/v1/api/product/save",
+							"protocol": "https",
+							"host": [
+								"opulent-space-trout-4jgjgg79rg9937q6g-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"product",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ || LISTAR",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://opulent-space-trout-4jgjgg79rg9937q6g-8085.app.github.dev/v1/api/product",
+							"protocol": "https",
+							"host": [
+								"opulent-space-trout-4jgjgg79rg9937q6g-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ X ID || LISTAR X ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://opulent-space-trout-4jgjgg79rg9937q6g-8085.app.github.dev/v1/api/product/1",
+							"protocol": "https",
+							"host": [
+								"opulent-space-trout-4jgjgg79rg9937q6g-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "READ X STATE || LISTAR X ESTADO",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE || EDITAR",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identifier\": 6,\r\n    \"name\": \"Agua Loa\",\r\n    \"type\": \"-\",\r\n    \"flavor\": \"Natural\",\r\n    \"size\": \"2L\",\r\n    \"stock\": 15,\r\n    \"price\": 3.0,\r\n    \"expirationDate\": \"2027-05-10T00:00:00\",\r\n    \"state\": \"A\",\r\n    \"category\": \"Bebida\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://curly-halibut-4jgjgg79rr4w3jrjp-8085.app.github.dev/v1/api/product/update",
+							"protocol": "https",
+							"host": [
+								"curly-halibut-4jgjgg79rr4w3jrjp-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"product",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE || ELIMINAR",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://curly-halibut-4jgjgg79rr4w3jrjp-8085.app.github.dev/v1/api/product/restore/1",
+							"protocol": "https",
+							"host": [
+								"curly-halibut-4jgjgg79rr4w3jrjp-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"product",
+								"restore",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RESTORE X ID || RESTAURAR X ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://curly-halibut-4jgjgg79rr4w3jrjp-8085.app.github.dev/v1/api/product/restore/5",
+							"protocol": "https",
+							"host": [
+								"curly-halibut-4jgjgg79rr4w3jrjp-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"product",
+								"restore",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

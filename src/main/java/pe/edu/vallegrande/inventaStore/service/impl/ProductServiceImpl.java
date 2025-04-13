@@ -39,28 +39,39 @@ public class ProductServiceImpl implements ProductService {
         log.info("Buscando producto por ID: " + id);
         return productRepository.findById(id);
     }
-
+    
+    @Override
+    public List<Product> findByState(Character state) {
+        log.info("Buscando producto por estado: " + state);
+        return productRepository.findByState(state);
+    }
 
     @Override
     public Product save(Product product) {
         log.info("Guardando producto: " + product.toString());
-        product.setState('A');
         return productRepository.save(product);
     }
-
-
+    
     @Override
     public Product update(Product product) {
         log.info("Actualizando producto: " + product.toString());
-        product.setState('A');
         return productRepository.save(product);
     }
-
 
     @Override
-    public Product delete(Product product) {
-        log.info("Eliminando producto: " + product.toString());
-        product.setState('A');
+    public Product deleteById(Long id) {
+        log.info("Eliminando producto con ID: " + id);
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto con ID " + id + " no encontrado"));
+        product.setState('I'); // Cambiar el estado a 'Inactivo'
         return productRepository.save(product);
     }
+    
+    @Override
+public Product restoreById(Long id) {
+    log.info("Restaurando producto con ID: " + id);
+    Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+    product.setState('A'); // Restaurar el estado a 'A' (Activo)
+    return productRepository.save(product);
+}
 }

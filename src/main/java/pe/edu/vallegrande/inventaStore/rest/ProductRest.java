@@ -39,6 +39,12 @@ public class ProductRest {
         return productService.findById(id);
     }
 
+    // Buscar un producto por su estado
+    @GetMapping("/estado/{state}")
+    public List<Product> findByState(@PathVariable Character state) {
+        return productService.findByState(state);
+    }
+
 
     // Guardar un nuevo producto
     @PostMapping("/save")
@@ -54,9 +60,14 @@ public class ProductRest {
     }
 
 
-    // Eliminar un producto
-    @PutMapping("/delete")
-    public Product delete(@RequestBody Product product) {
-        return productService.delete(product);
+    @PutMapping("/delete/{id}")
+    public Product delete(@PathVariable Long id) {
+        return productService.deleteById(id);
     }
+    
+    @PutMapping("/restore/{id}")
+    public Product restore(@PathVariable Long id) {
+        return productService.restoreById(id);
+    }
+
 }
