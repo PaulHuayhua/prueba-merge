@@ -35,6 +35,11 @@ public class SupplierRest {
     public Optional<Supplier> findById(@PathVariable Long id) {
         return supplierService.findById(id);
     }
+    
+    @GetMapping("/state/{state}")
+    public List<Supplier> findByState(@PathVariable String state) {
+        return supplierService.findByState(state);
+    }
 
     @PostMapping("/save")
     public Supplier save(@RequestBody Supplier supplier) {
@@ -46,9 +51,14 @@ public class SupplierRest {
         return supplierService.update(supplier);
     }
 
-    @PutMapping("/delete")
-    public Supplier delete(@RequestBody Supplier supplier) {
-        return supplierService.delete(supplier);
+    @PutMapping("/delete/{id}")
+    public Optional<Supplier> softDelete(@PathVariable Long id) {
+        return supplierService.softDelete(id);
+    }
+
+    @PutMapping("/restore/{id}")
+    public Optional<Supplier> restore(@PathVariable Long id) {
+        return supplierService.restore(id);
     }
 
 }

@@ -10,10 +10,13 @@ public interface SupplierService {
 
     Optional<Supplier> findById(Long id);
 
+    List<Supplier> findByState(String state);
+
     Supplier save(Supplier supplier);
 
     Supplier update(Supplier supplier);
 
-    Supplier delete(Supplier supplier);
+    Optional<Supplier> softDelete(Long id);
     
+    Optional<Supplier> restore(Long id);
 }
