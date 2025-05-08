@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"pepe\",\r\n    \"company\": \"florida\",\r\n    \"cellular\": \"987654325\",\r\n    \"state\": \"A\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Pedro Sánchez\",\r\n    \"company\": \"florida\",\r\n    \"supply_type\": \"Bebidas\",\r\n    \"address\": \"Av. Perú 123\",\r\n    \"email_business\": \"contacto@andina.com\",\r\n    \"cellular\": \"987654325\",\r\n    \"ruc\": \"20123456789\",\r\n    \"state\": \"A\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -25,10 +25,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://miniature-system-jj4ppg7q996v2q5x6-8085.app.github.dev/v1/api/supplier/save",
+							"raw": "https://orange-enigma-r4r55x6pw697cpp64-8085.app.github.dev/v1/api/supplier/save",
 							"protocol": "https",
 							"host": [
-								"miniature-system-jj4ppg7q996v2q5x6-8085",
+								"orange-enigma-r4r55x6pw697cpp64-8085",
 								"app",
 								"github",
 								"dev"
@@ -61,10 +61,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://miniature-system-jj4ppg7q996v2q5x6-8085.app.github.dev/v1/api/supplier",
+							"raw": "https://orange-enigma-r4r55x6pw697cpp64-8085.app.github.dev/v1/api/supplier",
 							"protocol": "https",
 							"host": [
-								"miniature-system-jj4ppg7q996v2q5x6-8085",
+								"orange-enigma-r4r55x6pw697cpp64-8085",
 								"app",
 								"github",
 								"dev"
@@ -96,10 +96,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://miniature-system-jj4ppg7q996v2q5x6-8085.app.github.dev/v1/api/supplier/2",
+							"raw": "https://orange-enigma-r4r55x6pw697cpp64-8085.app.github.dev/v1/api/supplier/2",
 							"protocol": "https",
 							"host": [
-								"miniature-system-jj4ppg7q996v2q5x6-8085",
+								"orange-enigma-r4r55x6pw697cpp64-8085",
 								"app",
 								"github",
 								"dev"
@@ -120,10 +120,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://miniature-system-jj4ppg7q996v2q5x6-8085.app.github.dev/v1/api/supplier/state/A",
+							"raw": "https://orange-enigma-r4r55x6pw697cpp64-8085.app.github.dev/v1/api/supplier/state/A",
 							"protocol": "https",
 							"host": [
-								"miniature-system-jj4ppg7q996v2q5x6-8085",
+								"orange-enigma-r4r55x6pw697cpp64-8085",
 								"app",
 								"github",
 								"dev"
@@ -146,7 +146,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"maria\",\r\n    \"company\": \"florida\",\r\n    \"cellular\": \"987654323\",\r\n    \"state\": \"A\"\r\n}\r\n",
+							"raw": "{\r\n    \"identifier\": 3,\r\n    \"name\": \"Pedro Sánchez\",\r\n    \"company\": \"florida\",\r\n    \"supply_type\": \"Golosinas\",\r\n    \"address\": \"Av. Perú 525\",\r\n    \"email_business\": \"contacto@andina.com\",\r\n    \"cellular\": \"987654523\",\r\n    \"ruc\": \"20123456789\",\r\n    \"state\": \"A\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -154,10 +154,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://miniature-system-jj4ppg7q996v2q5x6-8085.app.github.dev/v1/api/supplier/update",
+							"raw": "https://orange-enigma-r4r55x6pw697cpp64-8085.app.github.dev/v1/api/supplier/update",
 							"protocol": "https",
 							"host": [
-								"miniature-system-jj4ppg7q996v2q5x6-8085",
+								"orange-enigma-r4r55x6pw697cpp64-8085",
 								"app",
 								"github",
 								"dev"
@@ -178,10 +178,10 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "https://miniature-system-jj4ppg7q996v2q5x6-8085.app.github.dev/v1/api/supplier/delete/3",
+							"raw": "https://orange-enigma-r4r55x6pw697cpp64-8085.app.github.dev/v1/api/supplier/delete/3",
 							"protocol": "https",
 							"host": [
-								"miniature-system-jj4ppg7q996v2q5x6-8085",
+								"orange-enigma-r4r55x6pw697cpp64-8085",
 								"app",
 								"github",
 								"dev"
@@ -203,10 +203,10 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "https://miniature-system-jj4ppg7q996v2q5x6-8085.app.github.dev/v1/api/supplier/restore/3",
+							"raw": "https://orange-enigma-r4r55x6pw697cpp64-8085.app.github.dev/v1/api/supplier/restore/3",
 							"protocol": "https",
 							"host": [
-								"miniature-system-jj4ppg7q996v2q5x6-8085",
+								"orange-enigma-r4r55x6pw697cpp64-8085",
 								"app",
 								"github",
 								"dev"

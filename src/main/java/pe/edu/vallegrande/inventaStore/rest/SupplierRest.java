@@ -31,9 +31,9 @@ public class SupplierRest {
         return supplierService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Optional<Supplier> findById(@PathVariable Long id) {
-        return supplierService.findById(id);
+    @GetMapping("/{identifier}")
+    public Optional<Supplier> findById(@PathVariable Long identifier) {
+        return supplierService.findById(identifier);
     }
     
     @GetMapping("/state/{state}")
@@ -51,14 +51,14 @@ public class SupplierRest {
         return supplierService.update(supplier);
     }
 
-    @PutMapping("/delete/{id}")
-    public Optional<Supplier> softDelete(@PathVariable Long id) {
-        return supplierService.softDelete(id);
+    @PutMapping("/delete/{identifier}")
+    public Optional<Supplier> softDelete(@PathVariable Long identifier) {
+        return supplierService.softDelete(identifier);
     }
 
-    @PutMapping("/restore/{id}")
-    public Optional<Supplier> restore(@PathVariable Long id) {
-        return supplierService.restore(id);
+    @PutMapping("/restore/{identifier}")
+    public Optional<Supplier> restore(@PathVariable Long identifier) {
+        return supplierService.restore(identifier);
     }
 
 }
