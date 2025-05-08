@@ -14,9 +14,9 @@ import jakarta.persistence.Table;
 public class Supplier {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "identifier")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long identifier;
 
     @Column(name = "name")
     private String name;
@@ -24,8 +24,20 @@ public class Supplier {
     @Column(name = "company")
     private String company;
 
+    @Column(name = "supply_type")
+    private String supply_type;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "email_business")
+    private String email_business;
+
     @Column(name = "cellular")
     private String cellular;
+
+    @Column(name = "ruc")
+    private String ruc;
 
     @Column(name = "state")
     private String state;

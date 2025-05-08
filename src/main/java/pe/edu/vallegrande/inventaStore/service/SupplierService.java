@@ -8,7 +8,7 @@ public interface SupplierService {
 
     List<Supplier> findAll();
 
-    Optional<Supplier> findById(Long id);
+    Optional<Supplier> findById(Long identifier);
 
     List<Supplier> findByState(String state);
 
@@ -16,7 +16,7 @@ public interface SupplierService {
 
     Supplier update(Supplier supplier);
 
-    Optional<Supplier> softDelete(Long id);
+    Optional<Supplier> softDelete(Long identifier);
     
-    Optional<Supplier> restore(Long id);
+    Optional<Supplier> restore(Long identifier);
 }
