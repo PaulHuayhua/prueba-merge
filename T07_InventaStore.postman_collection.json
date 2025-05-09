@@ -1,14 +1,14 @@
 {
 	"info": {
 		"_postman_id": "d6e76d05-ca63-46c4-8f56-f932a7d37598",
-		"name": "InventaStore - Paul",
+		"name": "T07_InventaStore",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "43465865",
 		"_collection_link": "https://a22222-9802.postman.co/workspace/InventaStore~ed80e273-d0a3-4bce-b0f9-4620ed4a9793/collection/43465865-d6e76d05-ca63-46c4-8f56-f932a7d37598?action=share&source=collection_link&creator=43465865"
 	},
 	"item": [
 		{
-			"name": "CRUD InventaStore",
+			"name": "Master_Product",
 			"item": [
 				{
 					"name": "CREATE || CREAR",
@@ -61,10 +61,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://opulent-space-trout-4jgjgg79rg9937q6g-8085.app.github.dev/v1/api/product",
+							"raw": "https://reimagined-space-fiesta-7vrvrr94xpxqhp4jj-8085.app.github.dev/v1/api/product",
 							"protocol": "https",
 							"host": [
-								"opulent-space-trout-4jgjgg79rg9937q6g-8085",
+								"reimagined-space-fiesta-7vrvrr94xpxqhp4jj-8085",
 								"app",
 								"github",
 								"dev"
@@ -84,10 +84,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://opulent-space-trout-4jgjgg79rg9937q6g-8085.app.github.dev/v1/api/product/1",
+							"raw": "https://reimagined-space-fiesta-7vrvrr94xpxqhp4jj-8085.app.github.dev/v1/api/product/1",
 							"protocol": "https",
 							"host": [
-								"opulent-space-trout-4jgjgg79rg9937q6g-8085",
+								"reimagined-space-fiesta-7vrvrr94xpxqhp4jj-8085",
 								"app",
 								"github",
 								"dev"
@@ -106,7 +106,23 @@
 					"name": "READ X STATE || LISTAR X ESTADO",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://reimagined-space-fiesta-7vrvrr94xpxqhp4jj-8085.app.github.dev/v1/api/product/",
+							"protocol": "https",
+							"host": [
+								"reimagined-space-fiesta-7vrvrr94xpxqhp4jj-8085",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"v1",
+								"api",
+								"product",
+								""
+							]
+						}
 					},
 					"response": []
 				},

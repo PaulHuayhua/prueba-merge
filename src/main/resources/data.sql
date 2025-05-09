@@ -1,11 +1,13 @@
--- Crear el registro si es que no se duplican datos unicos o se insertan datos nulos
-INSERT INTO product (name, type, flavor, size, stock, price, expiration_date, state, category)
-VALUES
-('Coca Cola', '-', 'Cola', '1L', 150, 3.50, '2025-12-31 00:00:00', 'A', 'Bebida'),
-('KR', '-', 'Fresa', '1L', 200, 2.00, '2025-11-30 00:00:00', 'A', 'Bebida'),
-('Yogurt', 'Natural', '-', '1L', 100, 1.80, '2025-10-15 00:00:00', 'A', 'Lácteo'),
-('Leche Gloria', 'Entera', '-', '1L', 250, 3.00, '2025-09-01 00:00:00', 'A', 'Lácteo'),
-('Atún Florida', '-', '-', '170g', 120, 5.00, '2025-10-05 00:00:00', 'A', 'Conserva');
+INSERT INTO category (name) VALUES
+('Bebidas'),
+('Abarrotes'),
+('Lácteos');
+
+INSERT INTO product (name, type, flavor, size, stock, price, expiration_date, state, category_identifier) VALUES
+('Coca Cola', 'Refresco', 'Original', '500ml', 100, 2.50, '2025-12-31', 'A', 1),
+('Galletas Oreo', 'Galleta', 'Chocolate', '200g', 50, 3.00, '2026-01-01', 'A', 2),
+('Leche Alpura', 'Lácteo', 'Entera', '1L', 30, 1.50, '2025-11-30', 'A', 3);
+
 
 INSERT INTO supplier (name, company, supply_type, address, email_business, cellular, ruc, state)
 VALUES 

@@ -1,15 +1,27 @@
+-- Table: product
 CREATE TABLE product (
-    identifier INT NOT NULL IDENTITY(1,1),  -- Identificador autoincrementable
-    name VARCHAR(70) NOT NULL,
-    type VARCHAR(50) NOT NULL,
-    flavor VARCHAR(60) NOT NULL,
-    size VARCHAR(20) NOT NULL,
-    stock INT NOT NULL,
-    price DECIMAL(10,2) NOT NULL,  -- Cambié el tipo de dato para permitir dos decimales
-    expiration_date DATETIME NOT NULL,
-    state CHAR(1) NOT NULL,  -- Estado, por ejemplo 'A' para activo
-    category VARCHAR(20) NOT NULL,
-    PRIMARY KEY (identifier)
+    identifier int  NOT NULL IDENTITY(1, 1),
+    name varchar(70)  NOT NULL,
+    type varchar(50)  NULL,
+    flavor varchar(60)  NULL,
+    size varchar(20)  NULL,
+    stock int  NOT NULL,
+    price decimal(10,2)  NOT NULL,
+    expiration_date date  NULL,
+    state char(1)  NOT NULL DEFAULT 'A',
+    category_identifier int  NOT NULL,
+    CONSTRAINT chk_stock CHECK (stock >= 0),
+    CONSTRAINT chk_price CHECK (price >= 0),
+    CONSTRAINT chk_status CHECK (state IN ('A', 'I')),
+    CONSTRAINT pk_producto PRIMARY KEY  (identifier)
+);
+
+-- Table: category
+CREATE TABLE category (
+    identifier int  NOT NULL IDENTITY(1, 1),
+    name varchar(80)  NOT NULL,
+    CONSTRAINT uq_category_name UNIQUE (name),
+    CONSTRAINT category_pk PRIMARY KEY  (identifier)
 );
 
 -- Crear la tabla
