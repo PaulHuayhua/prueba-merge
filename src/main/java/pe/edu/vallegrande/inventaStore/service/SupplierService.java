@@ -10,7 +10,7 @@ public interface SupplierService {
 
     Optional<Supplier> findById(Long identifier);
 
-    List<Supplier> findByState(String state);
+    List<Supplier> findByState(Boolean state);
 
     Supplier save(Supplier supplier);
 

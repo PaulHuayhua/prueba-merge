@@ -34,7 +34,7 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public List<Supplier> findByState(String state) {
+    public List<Supplier> findByState(Boolean state) {
         log.info("Listando Datos por estado: ");
         return supplierRepository.findByState(state);
     }
@@ -42,14 +42,14 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public Supplier save(Supplier supplier) {
         log.info("Registrondo Datos: " + supplier.toString());
-        supplier.setState("A");
+        supplier.setState(true);
         return supplierRepository.save(supplier);
     }
 
     @Override
     public Supplier update(Supplier supplier) {
         log.info("Editando Datos: " + supplier.toString());
-        supplier.setState("A");
+        supplier.setState(true);
         return supplierRepository.save(supplier);
     }
 
@@ -57,7 +57,7 @@ public class SupplierServiceImpl implements SupplierService {
     public Optional<Supplier> softDelete(Long identifier) {
         Optional<Supplier> supplierOpt = supplierRepository.findById(identifier);
         supplierOpt.ifPresent(supplier -> {
-            supplier.setState("I");
+            supplier.setState(false);
             supplierRepository.save(supplier);
         });
         return supplierOpt;
@@ -67,7 +67,7 @@ public class SupplierServiceImpl implements SupplierService {
     public Optional<Supplier> restore(Long identifier) {
         Optional<Supplier> supplierOpt = supplierRepository.findById(identifier);
         supplierOpt.ifPresent(supplier -> {
-            supplier.setState("A");
+            supplier.setState(true);
             supplierRepository.save(supplier);
         });
         return supplierOpt;

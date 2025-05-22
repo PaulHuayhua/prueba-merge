@@ -37,7 +37,7 @@ public class SupplierRest {
     }
     
     @GetMapping("/state/{state}")
-    public List<Supplier> findByState(@PathVariable String state) {
+    public List<Supplier> findByState(@PathVariable Boolean state) {
         return supplierService.findByState(state);
     }
 
