@@ -20,22 +20,28 @@ public class ProductRest {
         this.productService = productService;
     }
 
-    // Obtener todos los productos
+    // ✅ Obtener todos los productos
     @GetMapping
     public List<Product> findAll() {
         return productService.findAll();
     }
 
-    // Buscar un producto por su ID
+    // ✅ Obtener producto por ID
     @GetMapping("/{id}")
     public Optional<Product> findById(@PathVariable Long id) {
         return productService.findById(id);
     }
 
-    // Buscar un producto por su estado (activo o inactivo)
+    // ✅ Buscar productos por estado (ej. A o I)
     @GetMapping("/state/{state}")
-    public List<Product> findByState(@PathVariable String state) {
+    public List<Product> findByState(@PathVariable Boolean state) {
         return productService.findByState(state);
+    }
+
+    // ✅ Buscar productos por nombre (texto parcial)
+    @GetMapping("/search")
+    public List<Product> searchByName(@RequestParam String name) {
+        return productService.searchByName(name);
     }
 
     // Guardar un nuevo producto
@@ -50,13 +56,13 @@ public class ProductRest {
         return productService.update(product);
     }
 
-    // Eliminar un producto (cambia su estado a inactivo)
+    // ✅ Eliminar producto (cambia estado a 'I')
     @PutMapping("/delete/{id}")
     public Product delete(@PathVariable Long id) {
         return productService.deleteById(id);
     }
 
-    // Restaurar un producto (cambia su estado a activo)
+    // ✅ Restaurar producto (cambia estado a 'A')
     @PutMapping("/restore/{id}")
     public Product restore(@PathVariable Long id) {
         return productService.restoreById(id);

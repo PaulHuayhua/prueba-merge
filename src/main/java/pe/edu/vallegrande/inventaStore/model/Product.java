@@ -1,14 +1,9 @@
 package pe.edu.vallegrande.inventaStore.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.Table;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -16,34 +11,31 @@ import java.time.LocalDateTime;
 public class Product {
 
     @Id
-    @Column(name = "identifier")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "identifier")
     private Long identifier;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 70)
     private String name;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name = "description", nullable = false, length = 160)
+    private String description;
 
-    @Column(name = "flavor")
-    private String flavor;
-
-    @Column(name = "size")
+    @Column(name = "size", length = 20)
     private String size;
 
-    @Column(name = "stock")
+    @Column(name = "stock", nullable = false)
     private Integer stock;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
     @Column(name = "expiration_date")
-    private LocalDateTime expirationDate;
+    private LocalDate expiration_date;
 
-    @Column(name = "state")
-    private String state;
+    @Column(name = "state", nullable = false)
+    private Boolean state = true;
 
-    @Column(name = "category_identifier")
-    private Long categoryIdentifier;
+    @Column(name = "category", nullable = false, length = 100)
+    private String category;
 }
