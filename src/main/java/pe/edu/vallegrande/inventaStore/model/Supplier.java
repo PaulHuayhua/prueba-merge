@@ -40,10 +40,10 @@ public class Supplier {
     @Column(name = "ruc")
     private String ruc;
 
-    @Column(name = "state")
-    private Boolean state = true;
-
     @Column(name = "registration_date")
     private LocalDate registration_date;
+
+    @Column(name = "state")
+    private Boolean state = true;
 
 }
