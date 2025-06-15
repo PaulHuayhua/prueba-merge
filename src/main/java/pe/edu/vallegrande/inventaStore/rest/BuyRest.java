@@ -35,6 +35,9 @@ public class BuyRest {
         return buyService.save(buy);
     }
 
-    // Agrega métodos update o delete solo si realmente los necesitas
+    @PutMapping("/update")
+    public Buy update(@RequestBody Buy buy) {
+        return buyService.update(buy);
+    }
 
 }

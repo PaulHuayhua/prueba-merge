@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
@@ -19,9 +20,6 @@ public class Supplier {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long identifier;
 
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "company")
     private String company;
 
@@ -34,16 +32,23 @@ public class Supplier {
     @Column(name = "email_business")
     private String email_business;
 
-    @Column(name = "cellular")
-    private String cellular;
+    @Column(name = "cell_phone")
+    private String cell_phone;
 
     @Column(name = "ruc")
     private String ruc;
 
-    @Column(name = "registration_date")
+    @Column(name = "registration_date", nullable = false)
     private LocalDate registration_date;
 
     @Column(name = "state")
     private Boolean state = true;
+
+    @PrePersist
+    public void prePersist() {
+        if (registration_date == null) {
+            registration_date = LocalDate.now();
+        }
+    }
 
 }

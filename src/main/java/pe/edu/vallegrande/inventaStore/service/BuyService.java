@@ -13,5 +13,6 @@ public interface BuyService {
 
     Buy save(Buy buy);
 
-    // Puedes agregar update o delete si en el futuro los necesitas
+    Buy update(Buy buy);
+
 }

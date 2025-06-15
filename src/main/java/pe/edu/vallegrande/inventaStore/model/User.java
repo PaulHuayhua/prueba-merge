@@ -32,4 +32,11 @@ public class User {
     @Column(name = "state", nullable = false, length = 1)
     private String state = "A";
 
+    @PrePersist
+    public void prePersist() {
+        if (registration_date == null) {
+            registration_date = LocalDate.now();
+        }
+    }
+
 }

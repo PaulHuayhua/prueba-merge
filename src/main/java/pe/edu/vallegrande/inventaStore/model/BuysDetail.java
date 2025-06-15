@@ -24,9 +24,10 @@ public class BuysDetail {
     @Column(name = "subtotal", nullable = false, precision = 10, scale = 2)
     private BigDecimal subtotal;
 
-    @Column(name = "buys_identifier", nullable = false)
-    private Long buysIdentifier;
-
     @Column(name = "product_identifier", nullable = false)
     private Long productIdentifier;
+    
+    @ManyToOne
+    @JoinColumn(name = "buys_identifier")  // nombre de la FK en tu tabla purchase_detail
+    private Buy buy;
 }

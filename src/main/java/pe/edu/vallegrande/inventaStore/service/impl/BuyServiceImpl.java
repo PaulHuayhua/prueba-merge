@@ -6,10 +6,13 @@ import pe.edu.vallegrande.inventaStore.service.BuyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class BuyServiceImpl implements BuyService {
 
     private final BuyRepository buyRepository;
@@ -33,4 +36,13 @@ public class BuyServiceImpl implements BuyService {
     public Buy save(Buy buy) {
         return buyRepository.save(buy);
     }
+
+    @Override
+    public Buy update(Buy buy) {
+        if (buy.getIdentifier() == null || !buyRepository.existsById(buy.getIdentifier())) {
+            throw new RuntimeException("La compra con identificador " + buy.getIdentifier() + " no existe");
+        }
+        return buyRepository.save(buy);
+    }
+
 }

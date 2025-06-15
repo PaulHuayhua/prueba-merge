@@ -34,20 +34,18 @@ CREATE TABLE product (
 
 CREATE TABLE supplier (
    identifier INT NOT NULL IDENTITY(1,1),
-   name VARCHAR(80) NOT NULL,
    company VARCHAR(100) NOT NULL,
    supply_type VARCHAR(50) NOT NULL,
    address VARCHAR(150) NOT NULL,
    email_business VARCHAR(255) NOT NULL,
-   cellular CHAR(9) NOT NULL,
+   cell_phone CHAR(9) NOT NULL,
    ruc CHAR(11) NOT NULL,
    registration_date DATE NOT NULL DEFAULT GETDATE(),
    state bit  NOT NULL DEFAULT 1,
-   CONSTRAINT uq_name_ruc_supplier UNIQUE (name, ruc),
-   CONSTRAINT chk_cellular CHECK (LEN(cellular) = 9 AND cellular LIKE '9%' AND cellular NOT LIKE '%[^0-9]%'),
+   CONSTRAINT uq_ruc_supplier UNIQUE (ruc),
+   CONSTRAINT chk_cell_phone CHECK (LEN(cell_phone) = 9 AND cell_phone LIKE '9%' AND cell_phone NOT LIKE '%[^0-9]%'),
    CONSTRAINT chk_ruc CHECK (LEN(ruc) = 11 AND ruc NOT LIKE '%[^0-9]%'),
    CONSTRAINT chk_email_business CHECK (email_business LIKE '_%@_%._%' AND LEN(email_business) <= 255 AND email_business NOT LIKE '% %'),
-   CONSTRAINT chk_name_supplier CHECK (LEN(name) >= 3 AND name NOT LIKE '%[^a-zA-ZáéíóúÁÉÍÓÚ ]%'),
    CONSTRAINT proveedor_pk PRIMARY KEY (identifier)
 );
 
@@ -99,11 +97,13 @@ CREATE TABLE sale_detail (
 
 CREATE TABLE buys (
     identifier INT NOT NULL IDENTITY(1,1),
-    buys_date DATETIME NOT NULL,
+    buys_date DATETIME NOT NULL DEFAULT GETDATE(),
     total_price DECIMAL(10,2) NOT NULL,
+    payment_method varchar(20)  NOT NULL,
     user_identifier INT NOT NULL,
     supplier_identifier INT NOT NULL,
     CONSTRAINT chk_total_price_buys CHECK (total_price >= 0),
+    CONSTRAINT chk_payment_method_purchase CHECK (payment_method NOT LIKE '%[^a-zA-ZáéíóúÁÉÍÓÚ ]%'),
     CONSTRAINT compra_pk PRIMARY KEY (identifier)
 );
 
@@ -135,6 +135,11 @@ ALTER TABLE sale_detail ADD CONSTRAINT sale_detail_sale
 ALTER TABLE sale ADD CONSTRAINT sale_customer
     FOREIGN KEY (customer_identifier)
     REFERENCES customer (identifier)
+    ON UPDATE CASCADE;
+
+ALTER TABLE sale ADD CONSTRAINT sale_user
+    FOREIGN KEY (user_identifier)
+    REFERENCES [user] (identifier)
     ON UPDATE CASCADE;
 
 ALTER TABLE buys ADD CONSTRAINT buys_user
