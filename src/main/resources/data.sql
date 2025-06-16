@@ -1,51 +1,71 @@
--- Inserción en product, supplier, customer y user (ya los tienes, los repito)
-INSERT INTO product (name, description, size, stock, price, expiration_date, category)
-VALUES
-('Arroz', 'Del Campo', '50kg', 50, 4.20, '2025-12-31', 'Abarrotes'),
-('Coca Cola', 'Sabor original', '500ml', 100, 1.50, '2025-08-10', 'Bebidas'),
-('Coca Cola', 'Sabor zero azúcar', '1l', 80, 1.60, '2025-08-10', 'Bebidas');
-
-INSERT INTO supplier (company, supply_type, address, email_business, cell_phone, ruc)
-VALUES 
-('Distribuidora Andina', 'Bebidas', 'Av. Perú 123', 'contacto@andina.com', '912345678', '20123456789'),
-('SnackExpress', 'Snacks', 'Calle Los Olivos 456', 'ventas@snackexpress.com', '987654321', '20456789123'),
-('Frutas del Valle', 'Frutas', 'Jr. Amazonas 789', 'luis@frutasvalle.com', '923456789', '20567891234');
-
-INSERT INTO customer (first_name, last_name) 
-VALUES
-('Carlos', 'Ramírez'),
-('Ana María', 'González'),
-('José', 'Pérez'),
-('Lucía', 'Delgado'),
-('Miguel Ángel', 'Zapata');
-
+-- ========== TABLA: user ==========
 INSERT INTO [user] (name, email, password_hash, rol)
 VALUES
-('Juan Pérez', 'juan.perez@mail.com', 'password123', 'Administrador'),
-('Ana Gómez', 'ana.gomez@mail.com', 'password456', 'Empleado'),
-('Carlos Ruiz', 'carlos.ruiz@mail.com', 'password789', 'Empleado');
+('Juan Pérez', 'juan.perez@empresa.com', 'hash1', 'Administrador'),
+('Lucía Gómez', 'lucia.gomez@empresa.com', 'hash2', 'Empleado'),
+('Carlos Ruiz', 'carlos.ruiz@empresa.com', 'hash3', 'Empleado'),
+('Ana Torres', 'ana.torres@empresa.com', 'hash4', 'Administrador'),
+('Luis Vega', 'luis.vega@empresa.com', 'hash5', 'Empleado');
 
--- Inserción en sale (ventas)
-INSERT INTO sale (issue_date, total_price, customer_identifier, user_identifier)
+-- ========== TABLA: supplier ==========
+INSERT INTO supplier (company, supply_type, address, email_business, cell_phone, ruc)
 VALUES
-('2025-05-20 10:30:00', 12.30, 1, 1),   -- venta para Carlos Ramírez por Juan Pérez
-('2025-05-21 14:45:00', 3.20, 2, 2);    -- venta para Ana María González por Ana Gómez
+('Distribuidora ABC', 'Alimentos', 'Av. Perú 123', 'contacto@abc.com', '987654321', '10458965231'),
+('Insumos XYZ', 'Bebidas', 'Jr. Lima 456', 'ventas@xyz.com', '987654322', '20458965232'),
+('Farmacia Vida', 'Medicamentos', 'Calle Salud 789', 'contacto@vida.com', '987654323', '30458965233'),
+('Electro Perú', 'Electrodomesticos', 'Av. Tecnológica 321', 'info@electro.com', '987654324', '40458965234'),
+('Textiles Andinos', 'Ropa', 'Jr. Cusco 654', 'ventas@andinos.com', '987654325', '50458965235');
 
--- Inserción en sale_detail (detalle de ventas)
+-- ========== TABLA: customer ==========
+INSERT INTO customer (first_name, last_name)
+VALUES
+('María', 'Fernández'),
+('Pedro', 'Ramírez'),
+('Sofía', 'López'),
+('Diego', 'Martínez'),
+('Camila', 'García');
+
+-- ========== TABLA: product ==========
+INSERT INTO product (name, description, size, stock, price, expiration_date, category)
+VALUES
+('Leche Gloria', 'Leche evaporada', '400ml', 100, 4.50, '2025-12-31', 'Lácteos'),
+('Arroz Costeño', 'Arroz superior', '1kg', 200, 3.20, NULL, 'Granos'),
+('Aceite Primor', 'Aceite vegetal', '1L', 150, 7.00, '2026-01-15', 'Aceites'),
+('Jabón Bolívar', 'Jabón en barra', '200g', 80, 2.50, NULL, 'Limpieza'),
+('Gaseosa Inka Kola', 'Botella personal', '500ml', 90, 2.80, '2025-11-10', 'Bebidas');
+
+-- ========== TABLA: purchase ==========
+INSERT INTO purchase (purchase_date, total_price, payment_method, user_identifier, supplier_identifier)
+VALUES
+(GETDATE(), 200.00, 'Efectivo', 1, 1),
+(GETDATE(), 350.00, 'Transferencia', 2, 2),
+(GETDATE(), 500.00, 'Tarjeta', 3, 3),
+(GETDATE(), 180.00, 'Efectivo', 4, 4),
+(GETDATE(), 220.00, 'Yape', 5, 5);
+
+-- ========== TABLA: purchase_detail ==========
+INSERT INTO purchase_detail (amount, unit_cost, subtotal, product_identifier, purchase_identifier)
+VALUES
+(10, 4.50, 45.00, 1, 1),
+(20, 3.20, 64.00, 2, 2),
+(15, 7.00, 105.00, 3, 3),
+(30, 2.50, 75.00, 4, 4),
+(25, 2.80, 70.00, 5, 5);
+
+-- ========== TABLA: sale ==========
+INSERT INTO sale (issue_date, total_price, payment_method, customer_identifier, user_identifier)
+VALUES
+(GETDATE(), 60.00, 'Yape', 1, 1),
+(GETDATE(), 120.00, 'Efectivo', 2, 2),
+(GETDATE(), 90.00, 'Transferencia', 3, 3),
+(GETDATE(), 140.00, 'Tarjeta', 4, 4),
+(GETDATE(), 85.00, 'Efectivo', 5, 5);
+
+-- ========== TABLA: sale_detail ==========
 INSERT INTO sale_detail (amount, subtotal, sale_identifier, product_identifier)
 VALUES
-(2, 8.40, 1, 1),  -- 2 unidades Arroz para la venta 1
-(3, 3.90, 1, 2),  -- 3 unidades Coca Cola 500ml para la venta 1
-(2, 3.20, 2, 2);  -- 2 unidades Coca Cola 500ml para la venta 2
-
--- Inserción en buys (compras)
-INSERT INTO buys (total_price, payment_method, user_identifier, supplier_identifier)
-VALUES
-(100.00, 'Efectivo', 3, 1),  -- compra por Carlos Ruiz a Pedro Sánchez
-(50.00, 'Efectivo', 1, 2);   -- compra por Juan Pérez a María Huamán
-
--- Inserción en buys_detail (detalle de compras)
-INSERT INTO buys_detail (amount, unit_cost, subtotal, buys_identifier, product_identifier)
-VALUES
-(50, 1.50, 75.00, 1, 2),  -- 50 unidades Coca Cola 500ml para compra 1
-(20, 1.25, 25.00, 2, 3);  -- 20 unidades Coca Cola 1l para compra 2
+(3, 13.50, 1, 1),
+(10, 32.00, 2, 2),
+(5, 35.00, 3, 3),
+(4, 10.00, 4, 4),
+(6, 16.80, 5, 5);
