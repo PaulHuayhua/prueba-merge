@@ -41,19 +41,30 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product update(Product product) {
-        if (!productRepo.existsById(product.getIdentifier())) {
-            throw new RuntimeException("Producto no encontrado con ID: " + product.getIdentifier());
+    public Product update(Long id, Product product) {
+        Optional<Product> existingOpt = productRepo.findById(id);
+        if (existingOpt.isEmpty()) {
+            throw new RuntimeException("Producto no encontrado con ID: " + id);
         }
-        product.setState(true);
-        return productRepo.save(product);
+
+        Product existing = existingOpt.get();
+        existing.setName(product.getName());
+        existing.setDescription(product.getDescription());
+        existing.setSize(product.getSize());
+        existing.setStock(product.getStock());
+        existing.setPrice(product.getPrice());
+        existing.setExpiration_date(product.getExpiration_date());
+        existing.setCategory(product.getCategory());
+        existing.setState(product.getState());
+
+        return productRepo.save(existing);
     }
 
     @Override
     public Product deleteById(Long id) {
         Product product = productRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado con ID: " + id));
-        product.setState(false); 
+        product.setState(false);
         return productRepo.save(product);
     }
 
@@ -68,5 +79,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> searchByName(String name) {
         return productRepo.findByNameContainingIgnoreCase(name);
-}
+    }
+
+    @Override
+    public Long getActiveCount() {
+        return productRepo.countByState(true);
+    }
+
 }

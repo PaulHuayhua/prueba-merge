@@ -51,9 +51,9 @@ public class ProductRest {
     }
 
     // Actualizar un producto existente
-    @PutMapping("/update")
-    public Product update(@RequestBody Product product) {
-        return productService.update(product);
+    @PutMapping("/update/{id}")
+    public Product update(@PathVariable Long id, @RequestBody Product product) {
+        return productService.update(id, product);
     }
 
     // ✅ Eliminar producto (cambia estado a 'I')
@@ -67,4 +67,11 @@ public class ProductRest {
     public Product restore(@PathVariable Long id) {
         return productService.restoreById(id);
     }
+
+    // Conteo de productos activos
+    @GetMapping("/count/active")
+    public Long getActiveProductCount() {
+        return productService.getActiveCount();
+    }
+
 }
