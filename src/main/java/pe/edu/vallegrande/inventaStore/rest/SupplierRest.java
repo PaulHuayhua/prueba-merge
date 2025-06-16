@@ -25,9 +25,9 @@ public class SupplierRest {
     public SupplierRest(SupplierService supplierService) {
         this.supplierService = supplierService;
     }
-    
+
     @GetMapping
-    public List <Supplier> findAll(){
+    public List<Supplier> findAll() {
         return supplierService.findAll();
     }
 
@@ -35,7 +35,7 @@ public class SupplierRest {
     public Optional<Supplier> findById(@PathVariable Long identifier) {
         return supplierService.findById(identifier);
     }
-    
+
     @GetMapping("/state/{state}")
     public List<Supplier> findByState(@PathVariable Boolean state) {
         return supplierService.findByState(state);
@@ -59,6 +59,11 @@ public class SupplierRest {
     @PutMapping("/restore/{identifier}")
     public Optional<Supplier> restore(@PathVariable Long identifier) {
         return supplierService.restore(identifier);
+    }
+
+    @GetMapping("/count")
+    public Long getCount() {
+        return supplierService.getCount();
     }
 
 }

@@ -19,4 +19,6 @@ public interface SupplierService {
     Optional<Supplier> softDelete(Long identifier);
     
     Optional<Supplier> restore(Long identifier);
+
+    Long getCount();
 }

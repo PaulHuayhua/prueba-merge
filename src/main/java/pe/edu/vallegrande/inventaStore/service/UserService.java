@@ -11,7 +11,7 @@ public interface UserService {
 
     Optional<User> findById(Long identifier);
 
-    List<User> findByState(String state);
+    List<User> findByState(Boolean state);
 
     User save(User user);
 
@@ -20,4 +20,6 @@ public interface UserService {
     Optional<User> softDelete(Long identifier);
 
     Optional<User> restore(Long identifier);
+
+    Optional<User> findByName(String name); 
 }

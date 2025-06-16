@@ -2,10 +2,10 @@ package pe.edu.vallegrande.inventaStore.rest;
 
 import pe.edu.vallegrande.inventaStore.model.Sale;
 import pe.edu.vallegrande.inventaStore.service.SaleService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +34,16 @@ public class SaleRest {
     @PostMapping("/save")
     public Sale save(@RequestBody Sale sale) {
         return saleService.save(sale);
+    }
+
+    @PutMapping("/update")
+    public Sale update(@RequestBody Sale sale) {
+        return saleService.update(sale);
+    }
+
+    @GetMapping("/total")
+    public BigDecimal getTotalSales() {
+        return saleService.getTotalSales();
     }
 
 }

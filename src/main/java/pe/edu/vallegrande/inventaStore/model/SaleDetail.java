@@ -21,9 +21,11 @@ public class SaleDetail {
     @Column(name = "subtotal", nullable = false, precision = 10, scale = 2)
     private BigDecimal subtotal;
 
-    @Column(name = "sale_identifier", nullable = false)
-    private Long sale_identifier;
-
     @Column(name = "product_identifier", nullable = false)
     private Long product_identifier;
+
+    @ManyToOne
+    @JoinColumn(name = "sale_identifier") 
+    private Sale sale;
+
 }

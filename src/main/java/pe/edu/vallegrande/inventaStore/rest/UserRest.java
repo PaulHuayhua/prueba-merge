@@ -38,7 +38,7 @@ public class UserRest {
     }
 
     @GetMapping("/state/{state}")
-    public List<User> findByState(@PathVariable String state) {
+    public List<User> findByState(@PathVariable Boolean state) {
         return userService.findByState(state);
     }
 

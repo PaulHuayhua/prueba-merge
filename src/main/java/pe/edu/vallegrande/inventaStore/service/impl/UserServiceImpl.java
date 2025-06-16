@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findByState(String state) {
+    public List<User> findByState(Boolean state) {
         log.info("Listando Usuarios por estado: {}", state);
         return userRepository.findByState(state);
     }
@@ -42,14 +42,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) {
         log.info("Registrando Usuario: {}", user);
-        user.setState("A");
+        user.setState(true);
         return userRepository.save(user);
     }
 
     @Override
     public User update(User user) {
         log.info("Actualizando Usuario: {}", user);
-        user.setState("A");
+        user.setState(true);
         return userRepository.save(user);
     }
 
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOpt = userRepository.findById(identifier);
         userOpt.ifPresent(user -> {
             log.info("Desactivando Usuario ID: {}", identifier);
-            user.setState("I");
+            user.setState(false);
             userRepository.save(user);
         });
         return userOpt;
@@ -69,9 +69,16 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOpt = userRepository.findById(identifier);
         userOpt.ifPresent(user -> {
             log.info("Reactivando Usuario ID: {}", identifier);
-            user.setState("A");
+            user.setState(true);
             userRepository.save(user);
         });
         return userOpt;
     }
+
+    @Override
+    public Optional<User> findByName(String name) {
+        return userRepository.findByName(name);
+    }
+
+    
 }

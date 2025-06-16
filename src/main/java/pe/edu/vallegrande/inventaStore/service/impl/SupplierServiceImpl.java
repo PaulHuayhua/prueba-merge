@@ -19,7 +19,6 @@ public class SupplierServiceImpl implements SupplierService {
     public SupplierServiceImpl(SupplierRepository supplierRepository) {
         this.supplierRepository = supplierRepository;
     }
-    
 
     @Override
     public List<Supplier> findAll() {
@@ -41,7 +40,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public Supplier save(Supplier supplier) {
-        log.info("Registrondo Datos: " + supplier.toString());
+        log.info("Registrando Datos: " + supplier.toString());
         supplier.setState(true);
         return supplierRepository.save(supplier);
     }
@@ -67,10 +66,15 @@ public class SupplierServiceImpl implements SupplierService {
     public Optional<Supplier> restore(Long identifier) {
         Optional<Supplier> supplierOpt = supplierRepository.findById(identifier);
         supplierOpt.ifPresent(supplier -> {
-            supplier.setState(true);
+            supplier.setState(true); // true = activo
             supplierRepository.save(supplier);
         });
         return supplierOpt;
+    }
+
+    @Override
+    public Long getCount() {
+        return supplierRepository.count();
     }
 
 }
